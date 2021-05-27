@@ -26,21 +26,17 @@ export const Nav = ({ data }) => {
         </a>
         <div className="flex-grow md:flex md:justify-end">
           <nav className="flex flex-wrap items-center justify-between sm:justify-end text-base -mx-2 sm:-mx-6 md:mx-0">
-            {data.items
-              .sort(function (a, b) {
-                return a - b;
-              })
-              .map(function (item, index) {
-                return (
-                  <a
-                    key={index}
-                    href="#"
-                    className={`mx-2 sm:mx-6 md:mx-8 text-sm tracking-wide font-semibold transition duration-150 ease-out text-gray-600 dark:text-gray-200`}
-                  >
-                    {item.label}
-                  </a>
-                );
-              })}
+            {data.items.map(function (item, index) {
+              return (
+                <a
+                  key={index}
+                  href="#"
+                  className={`mx-2 sm:mx-6 md:mx-8 text-sm tracking-wide font-semibold transition duration-150 ease-out text-gray-600 dark:text-gray-200`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </nav>
           <button
             onClick={() => {
@@ -51,14 +47,10 @@ export const Nav = ({ data }) => {
             aria-pressed="false"
           >
             <BiSun
-              className={`w-6 h-6 transition duration-300 ease-out transform ${
-                theme.themeMode === "light" && "opacity-0 rotate-90"
-              }`}
+              className={`w-6 h-6 transition duration-300 ease-out transform`}
             />
             <RiMoonClearLine
-              className={`w-6 h-6 absolute top-0 left-0 transition duration-300 ease-out transform  ${
-                theme.themeMode === "dark" && "opacity-0 -rotate-90"
-              }`}
+              className={`w-6 h-6 absolute top-0 left-0 transition duration-300 ease-out transform`}
             />
           </button>
         </div>
@@ -69,16 +61,16 @@ export const Nav = ({ data }) => {
 
 export const NAV_FIELDS = [
   {
-    label: "Wordmark",
+    label: "Wordmark (Group)",
     name: "wordmark",
     component: "group",
     fields: [
-      ...ICON_FIELDS,
       {
-        label: "Name",
+        label: "Name (Text)",
         name: "name",
         component: "text",
       },
+      ...ICON_FIELDS,
     ],
   },
   {
@@ -86,10 +78,11 @@ export const NAV_FIELDS = [
     name: "items",
     component: "group-list",
     itemProps: (item) => ({
+      key: item.key,
       label: item.label,
     }),
     defaultItem: () => ({
-      label: "Nav Link",
+      label: "New Link",
       link: "/",
     }),
     fields: [
