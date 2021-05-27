@@ -14,6 +14,7 @@ import HomeData from "../data/home.json";
 import { firebase, getClientApp } from "../firebase/firebaseClient";
 
 const App = ({ initialData }) => {
+  console.log("initialData", initialData);
   const cms = useCMS();
   cms.plugins.remove({
     __type: "screen",
@@ -44,16 +45,16 @@ const App = ({ initialData }) => {
         fields: FOOTER_FIELDS,
       },
     ],
-    onSubmit: (values) => {
-      // console.log("form", values);
+    onSubmit: async (values) => {
+      console.log("form", values);
       // setShowModal(true);
       try {
-        firebase
+        await firebase
           .database(getClientApp())
           .ref("/lautaro-lab")
           .update({ data: values });
-        cms.alerts.success("Data has been persisted into the database");
-        setTimeout(window.location.reload(), 2500);
+        cms.alerts.success("Data has been persisted");
+        // setTimeout(window.location.reload(), 2500);
       } catch (e) {
         console.error(e);
       }
