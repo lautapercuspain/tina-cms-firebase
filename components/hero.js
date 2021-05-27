@@ -75,10 +75,9 @@ export const IMAGE_FIELDS = [
 export const hero_template = {
   label: "Hero",
   defaultItem: {
-    tagline: "TAGLINE ABOVE TEXT",
+    tagline: "New Section tagline",
     headline: "This is a large display heading.",
-    text:
-      "Give your team a contextual, intuitive editing experience without sacrificing code quality.",
+    text: "Give your team a contextual, intuitive editing experience without sacrificing code quality.",
     image: {
       src: "/canal.jpg",
       alt: "Photo from Unsplash",
