@@ -90,7 +90,7 @@ export const Icon = ({ icon }) => {
 
 export const ICON_FIELDS = [
   {
-    label: "Icon",
+    label: "Icon Group (Group)",
     name: "icon",
     component: "group",
     fields: [
